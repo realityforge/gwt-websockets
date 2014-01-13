@@ -1,6 +1,8 @@
 gwt-websockets
 --------------
 
+[![Build Status](https://secure.travis-ci.org/realityforge/gwt-websockets.png?branch=master)](http://travis-ci.org/realityforge/gwt-websockets)
+
 A simple library to provide web sockets support to GWT.
 
 Quick Start
