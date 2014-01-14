@@ -1,6 +1,6 @@
 require 'buildr/git_auto_version'
 
-desc 'GWT Websocket Library'
+desc 'GWT WebSocket Library'
 define 'gwt-websockets' do
   project.group = 'org.realityforge.gwt.websockets'
   compile.options.source = '1.7'
