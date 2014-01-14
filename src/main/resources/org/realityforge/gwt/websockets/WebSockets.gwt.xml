@@ -1,0 +1,27 @@
+<module>
+  <source path="client"/>
+
+  <inherits name='com.google.web.bindery.event.Event'/>
+  <inherits name='com.google.gwt.core.Core'/>
+
+  <!-- Define the webSocket support property -->
+  <define-property name="webSocketSupport" values="maybe,no"/>
+
+  <!-- Set the default to maybe -->
+  <set-property name="webSocketSupport" value="maybe"/>
+
+  <!-- Older browsers do not support Storage -->
+  <set-property name="webSocketSupport" value="no">
+    <any>
+      <when-property-is name="user.agent" value="ie6"/>
+      <when-property-is name="user.agent" value="ie7"/>
+      <when-property-is name="user.agent" value="ie8"/>
+      <when-property-is name="user.agent" value="ie9"/>
+    </any>
+  </set-property>
+
+  <replace-with class="org.realityforge.gwt.websockets.client.WebSocket.NoSupportDetector">
+    <when-type-is class="org.realityforge.gwt.websockets.client.WebSocket.SupportDetector"/>
+    <when-property-is name="webSocketSupport" value="no"/>
+  </replace-with>
+</module>
