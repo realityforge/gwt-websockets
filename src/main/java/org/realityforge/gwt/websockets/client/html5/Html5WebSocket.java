@@ -97,7 +97,7 @@ public class Html5WebSocket
                              } );
       ws.onclose = $entry( function ( event )
                            {
-                             client.@org.realityforge.gwt.websockets.client.WebSocket::onClose(ZSLjava/lang/String;)(event.wasClean, event.code, event.reason);
+                             client.@org.realityforge.gwt.websockets.client.WebSocket::onClose(ZILjava/lang/String;)(event.wasClean, event.code, event.reason);
                            } );
       return ws;
     }-*/;
