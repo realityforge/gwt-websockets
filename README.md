@@ -19,3 +19,9 @@ into the build system. i.e.
    <scope>provided</scope>
 </dependency>
 ```
+
+Appendix
+--------
+
+* [Mozilla WebSockets Document](https://developer.mozilla.org/en-US/docs/WebSockets)
+* [RFC6455: The WebSocket Protocol](http://tools.ietf.org/html/rfc6455)
