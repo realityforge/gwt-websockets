@@ -6,7 +6,7 @@ import org.realityforge.gwt.websockets.client.WebSocket;
 import org.realityforge.gwt.websockets.client.event.MessageEvent.Handler;
 
 public class MessageEvent
-  extends WebsocketEvent<Handler>
+  extends WebSocketEvent<Handler>
 {
   public interface Handler
     extends EventHandler

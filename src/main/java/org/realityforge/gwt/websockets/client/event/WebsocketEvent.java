@@ -8,12 +8,12 @@ import org.realityforge.gwt.websockets.client.WebSocket;
 /**
  * Base class of all events originating from web socket.
  */
-public abstract class WebsocketEvent<H extends EventHandler>
+public abstract class WebSocketEvent<H extends EventHandler>
   extends GwtEvent<H>
 {
   private final WebSocket _webSocket;
 
-  protected WebsocketEvent( @Nonnull final WebSocket webSocket )
+  protected WebSocketEvent( @Nonnull final WebSocket webSocket )
   {
     _webSocket = webSocket;
   }

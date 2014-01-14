@@ -10,7 +10,7 @@ import org.realityforge.gwt.websockets.client.event.CloseEvent.Handler;
  * Event fired when the web socket is closed.
  */
 public class CloseEvent
-  extends WebsocketEvent<Handler>
+  extends WebSocketEvent<Handler>
 {
   public static final int CLOSE_NORMAL = 1000;
   public static final int CLOSE_GOING_AWAY = 1001;

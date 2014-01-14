@@ -9,7 +9,7 @@ import org.realityforge.gwt.websockets.client.event.ErrorEvent.Handler;
  * Event fired when there is an error with the web socket.
  */
 public class ErrorEvent
-  extends WebsocketEvent<Handler>
+  extends WebSocketEvent<Handler>
 {
   public interface Handler
     extends EventHandler

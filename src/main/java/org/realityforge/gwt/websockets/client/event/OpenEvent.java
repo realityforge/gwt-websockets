@@ -10,7 +10,7 @@ import org.realityforge.gwt.websockets.client.event.OpenEvent.Handler;
  * Event fired when web socket successfully connects.
  */
 public class OpenEvent
-  extends WebsocketEvent<Handler>
+  extends WebSocketEvent<Handler>
 {
   public interface Handler
     extends EventHandler
