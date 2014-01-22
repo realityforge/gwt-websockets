@@ -36,6 +36,14 @@ public abstract class WebSocket
     return ( null != g_factory ) ? g_factory.newWebSocket() : null;
   }
 
+  /**
+   * @return true if newWebSocketIfSupported() will return a non-null value, false otherwise.
+   */
+  public static boolean isSupported()
+  {
+    return ( null != g_factory ) || GWT.isClient() && getSupportDetector().isSupported();
+  }
+
   public static void register( @Nonnull final Factory factory )
   {
     g_factory = factory;
