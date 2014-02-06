@@ -76,6 +76,13 @@ public class Html5WebSocket
     return _webSocket.getURL();
   }
 
+  @Override
+  public String getExtensions()
+  {
+    return _webSocket.getExtensions();
+  }
+
+  @Override
   public final void send( @Nonnull String data )
   {
     checkConnected();
@@ -148,6 +155,10 @@ public class Html5WebSocket
 
     native String getURL() /*-{
         return this.url;
+    }-*/;
+
+    native String getExtensions()  /*-{
+        return this.extensions;
     }-*/;
 
     native String getProtocol()  /*-{
