@@ -96,6 +96,18 @@ public class Html5WebSocket
     return ReadyState.values()[_webSocket.getReadyState()];
   }
 
+  @Override
+  public void setBinaryType( @Nonnull final BinaryType binaryType )
+  {
+    _webSocket.setBinaryType( binaryType.name().toLowerCase() );
+  }
+
+  @Override
+  public BinaryType getBinaryType()
+  {
+    return BinaryType.valueOf( _webSocket.getBinaryType().toUpperCase() );
+  }
+
   private void checkConnected()
   {
     if ( null == _webSocket )
@@ -151,6 +163,14 @@ public class Html5WebSocket
 
     native void send( String data ) /*-{
       this.send( data );
+    }-*/;
+
+    native String getBinaryType()  /*-{
+        return this.binaryType;
+    }-*/;
+
+    native void setBinaryType( String binaryType )  /*-{
+        this.binaryType = binaryType;
     }-*/;
 
     native String getURL() /*-{

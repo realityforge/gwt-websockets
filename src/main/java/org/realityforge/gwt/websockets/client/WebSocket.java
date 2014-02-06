@@ -23,6 +23,11 @@ public abstract class WebSocket
     CONNECTING, OPEN, CLOSING, CLOSED
   }
 
+  public enum BinaryType
+  {
+    BLOB, ARRAYBUFFER
+  }
+
   private static SupportDetector g_supportDetector;
   private static Factory g_factory;
   private final EventBus _eventBus;
@@ -90,6 +95,10 @@ public abstract class WebSocket
   public abstract String getExtensions();
 
   public abstract ReadyState getReadyState();
+
+  public abstract void setBinaryType( @Nonnull BinaryType binaryType );
+
+  public abstract BinaryType getBinaryType();
 
   @Nonnull
   public final HandlerRegistration addOpenHandler( @Nonnull OpenEvent.Handler handler )
