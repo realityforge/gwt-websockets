@@ -17,6 +17,7 @@ public abstract class WebSocket
   {
     WebSocket newWebSocket();
   }
+
   public enum ReadyState
   {
     CONNECTING, OPEN, CLOSING, CLOSED
