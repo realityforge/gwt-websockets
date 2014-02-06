@@ -4,6 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.realityforge.gwt.websockets.client.WebSocket;
 
 public class Html5WebSocket
@@ -35,6 +36,14 @@ public class Html5WebSocket
   {
     checkConnected();
     _webSocket.close();
+    _webSocket = null;
+  }
+
+  @Override
+  public void close( final short code, @Nullable final String reason )
+  {
+    checkConnected();
+    _webSocket.close( code, reason );
     _webSocket = null;
   }
 
@@ -122,6 +131,10 @@ public class Html5WebSocket
 
     native void close() /*-{
       this.close();
+    }-*/;
+
+    native void close(int code, String reason) /*-{
+        this.close(code, reason);
     }-*/;
 
     native void send( String data ) /*-{

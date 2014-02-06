@@ -72,6 +72,13 @@ public abstract class WebSocket
 
   public abstract void close();
 
+  public void close( short code )
+  {
+    close( code, null );
+  }
+
+  public abstract void close( short code, @Nullable String reason );
+
   public abstract void send( @Nonnull String data );
 
   public abstract int getBufferedAmount();

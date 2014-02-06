@@ -1,5 +1,6 @@
 ## 0.3:
 
+* Add support for WebSocket.close method that allows specification of the code and reason parameters.
 * Implement WebSocket.getProtocol().
 
 ## 0.2:
