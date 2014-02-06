@@ -1,8 +1,11 @@
 package org.realityforge.gwt.websockets.client;
 
+import com.google.gwt.typedarrays.shared.ArrayBuffer;
+import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 final class TestWebSocket
   extends WebSocket
@@ -45,6 +48,54 @@ final class TestWebSocket
 
   @Override
   public ReadyState getReadyState()
+  {
+    return null;
+  }
+
+  @Override
+  public void close( final short code, @Nullable final String reason )
+  {
+
+  }
+
+  @Override
+  public void send( @Nonnull final ArrayBuffer data )
+  {
+
+  }
+
+  @Override
+  public void send( @Nonnull final ArrayBufferView data )
+  {
+
+  }
+
+  @Override
+  public String getProtocol()
+  {
+    return null;
+  }
+
+  @Override
+  public String getURL()
+  {
+    return null;
+  }
+
+  @Override
+  public String getExtensions()
+  {
+    return null;
+  }
+
+  @Override
+  public void setBinaryType( @Nonnull final BinaryType binaryType )
+  {
+
+  }
+
+  @Override
+  public BinaryType getBinaryType()
   {
     return null;
   }
