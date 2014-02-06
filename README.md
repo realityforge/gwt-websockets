@@ -65,6 +65,11 @@ A very simple example of this code is available in the
 [gwt-websockets-example](https://github.com/realityforge/gwt-websockets-example)
 project.
 
+TODO
+----
+
+* Consider supporting a Blob object from the HTML5 File API with send and receive.
+
 Appendix
 --------
 
