@@ -1,6 +1,8 @@
 package org.realityforge.gwt.websockets.client.html5;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.typedarrays.shared.ArrayBuffer;
+import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import javax.annotation.Nonnull;
@@ -90,6 +92,20 @@ public class Html5WebSocket
   }
 
   @Override
+  public void send( @Nonnull final ArrayBufferView data )
+  {
+    checkConnected();
+    _webSocket.send( data );
+  }
+
+  @Override
+  public void send( @Nonnull final ArrayBuffer data )
+  {
+    checkConnected();
+    _webSocket.send( data );
+  }
+
+  @Override
   public final ReadyState getReadyState()
   {
     checkConnected();
@@ -162,6 +178,14 @@ public class Html5WebSocket
     }-*/;
 
     native void send( String data ) /*-{
+      this.send( data );
+    }-*/;
+
+    native void send( ArrayBuffer data ) /*-{
+      this.send( data );
+    }-*/;
+
+    native void send( ArrayBufferView data ) /*-{
       this.send( data );
     }-*/;
 

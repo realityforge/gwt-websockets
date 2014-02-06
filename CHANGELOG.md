@@ -1,5 +1,6 @@
 ## 0.3:
 
+* Implement WebSocket.send(ArrayBuffer) and WebSocket.send(ArrayBufferView).
 * Implement WebSocket.getBinaryType() and WebSocket.setBinaryType().
 * Implement WebSocket.getExtensions().
 * Implement WebSocket.getURL().

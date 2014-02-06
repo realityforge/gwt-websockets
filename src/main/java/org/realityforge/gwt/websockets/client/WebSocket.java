@@ -1,6 +1,8 @@
 package org.realityforge.gwt.websockets.client;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.typedarrays.shared.ArrayBuffer;
+import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import javax.annotation.Nonnull;
@@ -85,6 +87,10 @@ public abstract class WebSocket
   public abstract void close( short code, @Nullable String reason );
 
   public abstract void send( @Nonnull String data );
+
+  public abstract void send( @Nonnull ArrayBuffer data );
+
+  public abstract void send( @Nonnull ArrayBufferView data );
 
   public abstract int getBufferedAmount();
 

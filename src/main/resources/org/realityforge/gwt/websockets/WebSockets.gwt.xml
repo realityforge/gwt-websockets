@@ -3,6 +3,7 @@
 
   <inherits name='com.google.web.bindery.event.Event'/>
   <inherits name='com.google.gwt.core.Core'/>
+  <inherits name='com.google.gwt.typedarrays.TypedArrays'/>
 
   <!-- Define the webSocket support property -->
   <define-property name="webSocketSupport" values="maybe,no"/>
