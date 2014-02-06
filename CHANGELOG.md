@@ -1,3 +1,7 @@
+## 0.3:
+
+* Implement WebSocket.getProtocol().
+
 ## 0.2:
 
 * Support WebSocket.isSupported() method that will return true if WebSocket.newWebSocketIfSupported()

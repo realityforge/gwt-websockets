@@ -75,6 +75,8 @@ public abstract class WebSocket
 
   public abstract int getBufferedAmount();
 
+  public abstract String getProtocol();
+
   public abstract ReadyState getReadyState();
 
   @Nonnull
