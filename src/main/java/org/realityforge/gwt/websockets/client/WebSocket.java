@@ -85,6 +85,8 @@ public abstract class WebSocket
 
   public abstract String getProtocol();
 
+  public abstract String getURL();
+
   public abstract ReadyState getReadyState();
 
   @Nonnull

@@ -71,6 +71,11 @@ public class Html5WebSocket
   }
 
   @Override
+  public String getURL()
+  {
+    return _webSocket.getURL();
+  }
+
   public final void send( @Nonnull String data )
   {
     checkConnected();
@@ -139,6 +144,10 @@ public class Html5WebSocket
 
     native void send( String data ) /*-{
       this.send( data );
+    }-*/;
+
+    native String getURL() /*-{
+        return this.url;
     }-*/;
 
     native String getProtocol()  /*-{
