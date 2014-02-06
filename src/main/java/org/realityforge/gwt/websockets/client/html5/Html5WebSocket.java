@@ -57,6 +57,7 @@ public class Html5WebSocket
       throw new IllegalStateException( "WebSocket already connected" );
     }
     _webSocket = WebSocketImpl.create( this, server );
+    setBinaryType( BinaryType.ARRAYBUFFER );
   }
 
   @Override
@@ -148,7 +149,14 @@ public class Html5WebSocket
                              } );
       ws.onmessage = $entry( function ( response )
                              {
-                               client.@org.realityforge.gwt.websockets.client.WebSocket::onMessage(Ljava/lang/String;)( response.data );
+                               if ( typeof(response.data) == 'string' )
+                               {
+                                 client.@org.realityforge.gwt.websockets.client.WebSocket::onMessage(Ljava/lang/String;)( response.data );
+                               }
+                               else
+                               {
+                                 client.@org.realityforge.gwt.websockets.client.WebSocket::onMessage(Lcom/google/gwt/typedarrays/shared/ArrayBuffer;)( response.data );
+                               }
                              } );
       ws.onclose = $entry( function ( event )
                            {

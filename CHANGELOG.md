@@ -1,5 +1,6 @@
 ## 0.3:
 
+* Support receiving ArrayBuffer messages.
 * Implement WebSocket.send(ArrayBuffer) and WebSocket.send(ArrayBufferView).
 * Implement WebSocket.getBinaryType() and WebSocket.setBinaryType().
 * Implement WebSocket.getExtensions().

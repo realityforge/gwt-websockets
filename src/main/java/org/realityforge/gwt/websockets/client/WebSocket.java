@@ -157,6 +157,14 @@ public abstract class WebSocket
   }
 
   /**
+   * Fire a Message event.
+   */
+  protected final void onMessage( final ArrayBuffer data )
+  {
+    _eventBus.fireEventFromSource( new MessageEvent( this, data ), this );
+  }
+
+  /**
    * Fire an Error event.
    */
   protected final void onError()

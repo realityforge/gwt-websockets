@@ -1,6 +1,7 @@
 package org.realityforge.gwt.websockets.client;
 
 import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.typedarrays.shared.ArrayBuffer;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import org.realityforge.gwt.websockets.client.event.CloseEvent;
 import org.realityforge.gwt.websockets.client.event.ErrorEvent;
@@ -61,6 +62,18 @@ public class WebSocketTest
       verify( handler, only() ).onMessageEvent( refEq( expected, "source" ) );
       registration.removeHandler();
       webSocket.onMessage( "Blah" );
+      verify( handler, atMost( 1 ) ).onMessageEvent( any( MessageEvent.class ) );
+    }
+
+    {
+      final MessageEvent.Handler handler = mock( MessageEvent.Handler.class );
+      final HandlerRegistration registration = webSocket.addMessageHandler( handler );
+      final ArrayBuffer arrayBuffer = mock( ArrayBuffer.class );
+      webSocket.onMessage( arrayBuffer );
+      final MessageEvent expected = new MessageEvent( webSocket, arrayBuffer );
+      verify( handler, only() ).onMessageEvent( refEq( expected, "source" ) );
+      registration.removeHandler();
+      webSocket.onMessage( arrayBuffer );
       verify( handler, atMost( 1 ) ).onMessageEvent( any( MessageEvent.class ) );
     }
 
