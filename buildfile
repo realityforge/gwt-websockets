@@ -3,8 +3,8 @@ require 'buildr/git_auto_version'
 desc 'GWT WebSocket Library'
 define 'gwt-websockets' do
   project.group = 'org.realityforge.gwt.websockets'
-  compile.options.source = '1.7'
-  compile.options.target = '1.7'
+  compile.options.source = '1.6'
+  compile.options.target = '1.6'
   compile.options.lint = 'all'
 
   project.version = ENV['PRODUCT_VERSION'] if ENV['PRODUCT_VERSION']

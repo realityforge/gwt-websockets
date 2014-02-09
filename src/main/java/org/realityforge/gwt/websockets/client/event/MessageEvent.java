@@ -20,7 +20,7 @@ public class MessageEvent
     TEXT, ARRAY_BUFFER
   }
 
-  private static final Type<Handler> TYPE = new Type<>();
+  private static final Type<Handler> TYPE = new Type<Handler>();
 
   public static Type<Handler> getType()
   {
