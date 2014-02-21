@@ -55,19 +55,16 @@ final class TestWebSocket
   @Override
   public void close( final short code, @Nullable final String reason )
   {
-
   }
 
   @Override
   public void send( @Nonnull final ArrayBuffer data )
   {
-
   }
 
   @Override
   public void send( @Nonnull final ArrayBufferView data )
   {
-
   }
 
   @Override
@@ -91,7 +88,6 @@ final class TestWebSocket
   @Override
   public void setBinaryType( @Nonnull final BinaryType binaryType )
   {
-
   }
 
   @Override
