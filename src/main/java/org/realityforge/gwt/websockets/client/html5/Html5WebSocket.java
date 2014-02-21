@@ -109,19 +109,27 @@ public class Html5WebSocket
   @Override
   public final ReadyState getReadyState()
   {
-    checkConnected();
-    return ReadyState.values()[_webSocket.getReadyState()];
+    if ( null == _webSocket )
+    {
+      return ReadyState.CLOSED;
+    }
+    else
+    {
+      return ReadyState.values()[ _webSocket.getReadyState() ];
+    }
   }
 
   @Override
   public void setBinaryType( @Nonnull final BinaryType binaryType )
   {
+    checkConnected();
     _webSocket.setBinaryType( binaryType.name().toLowerCase() );
   }
 
   @Override
   public BinaryType getBinaryType()
   {
+    checkConnected();
     return BinaryType.valueOf( _webSocket.getBinaryType().toUpperCase() );
   }
 
@@ -144,9 +152,9 @@ public class Html5WebSocket
                             client.@org.realityforge.gwt.websockets.client.WebSocket::onOpen()();
                           } );
       ws.onerror = $entry( function ()
-                             {
-                               client.@org.realityforge.gwt.websockets.client.WebSocket::onError()();
-                             } );
+                           {
+                             client.@org.realityforge.gwt.websockets.client.WebSocket::onError()();
+                           } );
       ws.onmessage = $entry( function ( response )
                              {
                                if ( typeof(response.data) == 'string' )
@@ -160,7 +168,9 @@ public class Html5WebSocket
                              } );
       ws.onclose = $entry( function ( event )
                            {
-                             client.@org.realityforge.gwt.websockets.client.WebSocket::onClose(ZILjava/lang/String;)(event.wasClean, event.code, event.reason);
+                             client.@org.realityforge.gwt.websockets.client.WebSocket::onClose(ZILjava/lang/String;)( event.wasClean,
+                                                                                                                      event.code,
+                                                                                                                      event.reason );
                            } );
       return ws;
     }-*/;
@@ -169,20 +179,20 @@ public class Html5WebSocket
     {
     }
 
-	native int getBufferedAmount() /*-{
-		return this.bufferedAmount;
-	}-*/;
+    native int getBufferedAmount() /*-{
+      return this.bufferedAmount;
+    }-*/;
 
-	native int getReadyState() /*-{
-		return this.readyState;
-	}-*/;
+    native int getReadyState() /*-{
+      return this.readyState;
+    }-*/;
 
     native void close() /*-{
       this.close();
     }-*/;
 
-    native void close(int code, String reason) /*-{
-        this.close(code, reason);
+    native void close( int code, String reason ) /*-{
+      this.close( code, reason );
     }-*/;
 
     native void send( String data ) /*-{
@@ -198,23 +208,23 @@ public class Html5WebSocket
     }-*/;
 
     native String getBinaryType()  /*-{
-        return this.binaryType;
+      return this.binaryType;
     }-*/;
 
     native void setBinaryType( String binaryType )  /*-{
-        this.binaryType = binaryType;
+      this.binaryType = binaryType;
     }-*/;
 
     native String getURL() /*-{
-        return this.url;
+      return this.url;
     }-*/;
 
     native String getExtensions()  /*-{
-        return this.extensions;
+      return this.extensions;
     }-*/;
 
     native String getProtocol()  /*-{
-        return this.protocol;
+      return this.protocol;
     }-*/;
   }
 }

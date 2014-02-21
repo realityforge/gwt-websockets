@@ -1,3 +1,7 @@
+## 0.5:
+
+* Ensure WebSocket.getReadyState() returns CLOSED when not connected.
+
 ## 0.4:
 
 * Restore Java 6 compatibility.
