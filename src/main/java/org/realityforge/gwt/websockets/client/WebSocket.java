@@ -34,6 +34,13 @@ public abstract class WebSocket
   private static Factory g_factory;
   private final EventBus _eventBus;
 
+  /**
+   * Create a WebSocket if supported by the platform.
+   *
+   * This method will use the registered factory to create the WebSocket instance.
+   *
+   * @return a WebSocket instance, if supported by the platform, null otherwise.
+   */
   public static WebSocket newWebSocketIfSupported()
   {
     if ( null == g_factory && GWT.isClient() && getSupportDetector().isSupported() )
@@ -52,11 +59,25 @@ public abstract class WebSocket
     return ( null != g_factory ) || GWT.isClient() && getSupportDetector().isSupported();
   }
 
+  /**
+   * Register a factory to be used to construct WebSocket instances.
+   * This is not usually used as the built in browser based factory will
+   * be detected and used if available. The register method is typically used
+   * by test frameworks.
+   *
+   * @param factory the factory to register.
+   */
   public static void register( @Nonnull final Factory factory )
   {
     g_factory = factory;
   }
 
+  /**
+   * Deregister factory if the specified factory is the registered factory.
+   *
+   * @param factory the factory to deregister.
+   * @return true if able to deregister, false otherwise.
+   */
   public static boolean deregister( @Nonnull final Factory factory )
   {
     if ( g_factory != factory )
