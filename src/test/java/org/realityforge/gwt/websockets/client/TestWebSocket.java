@@ -7,10 +7,10 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-final class TestWebSocket
+public final class TestWebSocket
   extends WebSocket
 {
-  static class Factory
+  public static class Factory
     implements WebSocket.Factory
   {
     @Override
