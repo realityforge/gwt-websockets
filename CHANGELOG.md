@@ -1,5 +1,6 @@
 ## 0.5:
 
+* Add WebSocket.isConnected() method.
 * Ensure WebSocket.getExtensions(), WebSocket.getProtocol() and WebSocket.getURL() throw an
   IllegalStateException if the WebSocket is not connected.
 * Ensure WebSocket.getReadyState() returns CLOSED when not connected.

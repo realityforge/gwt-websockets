@@ -88,6 +88,7 @@ public abstract class WebSocket
 
   public abstract void send( @Nonnull String data );
 
+  public abstract boolean isConnected();
   public abstract void send( @Nonnull ArrayBuffer data );
 
   public abstract void send( @Nonnull ArrayBufferView data );

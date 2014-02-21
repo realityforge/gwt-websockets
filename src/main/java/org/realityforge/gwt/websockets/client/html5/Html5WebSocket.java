@@ -61,6 +61,12 @@ public class Html5WebSocket
   }
 
   @Override
+  public boolean isConnected()
+  {
+    return null != _webSocket;
+  }
+
+  @Override
   public final int getBufferedAmount()
   {
     checkConnected();
