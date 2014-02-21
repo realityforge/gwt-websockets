@@ -4,6 +4,9 @@
 * Ensure WebSocket.getExtensions(), WebSocket.getProtocol() and WebSocket.getURL() throw an
   IllegalStateException if the WebSocket is not connected.
 * Ensure WebSocket.getReadyState() returns CLOSED when not connected.
+* Move WebSocket to using WebSocketListener interface as the primary means of notifying library
+  consumers of web socket events. Add an EventBasedWebSocketListener to support the previous
+  event-oriented mechanisms of integrating with the WebSocket library.
 
 ## 0.4:
 
