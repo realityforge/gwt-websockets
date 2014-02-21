@@ -1,5 +1,7 @@
 ## 0.5:
 
+* Ensure WebSocket.getExtensions(), WebSocket.getProtocol() and WebSocket.getURL() throw an
+  IllegalStateException if the WebSocket is not connected.
 * Ensure WebSocket.getReadyState() returns CLOSED when not connected.
 
 ## 0.4:

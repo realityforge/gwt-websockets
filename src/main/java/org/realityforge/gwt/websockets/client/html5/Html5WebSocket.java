@@ -70,18 +70,21 @@ public class Html5WebSocket
   @Override
   public String getProtocol()
   {
+    checkConnected();
     return _webSocket.getProtocol();
   }
 
   @Override
   public String getURL()
   {
+    checkConnected();
     return _webSocket.getURL();
   }
 
   @Override
   public String getExtensions()
   {
+    checkConnected();
     return _webSocket.getExtensions();
   }
 
