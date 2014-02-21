@@ -2,8 +2,6 @@ package org.realityforge.gwt.websockets.client;
 
 import com.google.gwt.typedarrays.shared.ArrayBuffer;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
-import com.google.web.bindery.event.shared.EventBus;
-import com.google.web.bindery.event.shared.SimpleEventBus;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -16,13 +14,8 @@ public final class TestWebSocket
     @Override
     public WebSocket newWebSocket()
     {
-      return new TestWebSocket( new SimpleEventBus() );
+      return new TestWebSocket();
     }
-  }
-
-  TestWebSocket( final EventBus eventBus )
-  {
-    super( eventBus );
   }
 
   @Override
@@ -33,6 +26,12 @@ public final class TestWebSocket
   @Override
   public void close()
   {
+  }
+
+  @Override
+  public boolean isConnected()
+  {
+    return false;
   }
 
   @Override

@@ -3,14 +3,8 @@ package org.realityforge.gwt.websockets.client;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.typedarrays.shared.ArrayBuffer;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
-import com.google.web.bindery.event.shared.EventBus;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.realityforge.gwt.websockets.client.event.CloseEvent;
-import org.realityforge.gwt.websockets.client.event.ErrorEvent;
-import org.realityforge.gwt.websockets.client.event.MessageEvent;
-import org.realityforge.gwt.websockets.client.event.OpenEvent;
 import org.realityforge.gwt.websockets.client.html5.Html5WebSocket;
 
 public abstract class WebSocket
@@ -32,7 +26,8 @@ public abstract class WebSocket
 
   private static SupportDetector g_supportDetector;
   private static Factory g_factory;
-  private final EventBus _eventBus;
+  @Nonnull
+  private WebSocketListener _listener = NullWebSocketListener.LISTENER;
 
   /**
    * Create a WebSocket if supported by the platform.
@@ -91,65 +86,62 @@ public abstract class WebSocket
     }
   }
 
-  public WebSocket( final EventBus eventBus )
-  {
-    _eventBus = eventBus;
-  }
+  public abstract void connect( @Nonnull String server, @Nonnull String... protocols )
+    throws IllegalStateException;
 
-  public abstract void connect( @Nonnull String server, @Nonnull String... protocols );
-
-  public abstract void close();
+  public abstract void close()
+    throws IllegalStateException;
 
   public void close( short code )
+    throws IllegalStateException
   {
     close( code, null );
   }
 
-  public abstract void close( short code, @Nullable String reason );
-
-  public abstract void send( @Nonnull String data );
+  public abstract void close( short code, @Nullable String reason )
+    throws IllegalStateException;
 
   public abstract boolean isConnected();
-  public abstract void send( @Nonnull ArrayBuffer data );
 
-  public abstract void send( @Nonnull ArrayBufferView data );
+  public abstract void send( @Nonnull String data )
+    throws IllegalStateException;
 
-  public abstract int getBufferedAmount();
+  public abstract void send( @Nonnull ArrayBuffer data )
+    throws IllegalStateException;
 
-  public abstract String getProtocol();
+  public abstract void send( @Nonnull ArrayBufferView data )
+    throws IllegalStateException;
 
-  public abstract String getURL();
+  public abstract int getBufferedAmount()
+    throws IllegalStateException;
 
-  public abstract String getExtensions();
+  public abstract String getProtocol()
+    throws IllegalStateException;
 
-  public abstract ReadyState getReadyState();
+  public abstract String getURL()
+    throws IllegalStateException;
 
-  public abstract void setBinaryType( @Nonnull BinaryType binaryType );
+  public abstract String getExtensions()
+    throws IllegalStateException;
 
-  public abstract BinaryType getBinaryType();
+  public abstract ReadyState getReadyState()
+    throws IllegalStateException;
+
+  public abstract void setBinaryType( @Nonnull BinaryType binaryType )
+    throws IllegalStateException;
+
+  public abstract BinaryType getBinaryType()
+    throws IllegalStateException;
 
   @Nonnull
-  public final HandlerRegistration addOpenHandler( @Nonnull OpenEvent.Handler handler )
+  public final WebSocketListener getListener()
   {
-    return _eventBus.addHandler( OpenEvent.getType(), handler );
+    return _listener;
   }
 
-  @Nonnull
-  public final HandlerRegistration addCloseHandler( @Nonnull CloseEvent.Handler handler )
+  public final void setListener( @Nullable final WebSocketListener listener )
   {
-    return _eventBus.addHandler( CloseEvent.getType(), handler );
-  }
-
-  @Nonnull
-  public final HandlerRegistration addMessageHandler( @Nonnull MessageEvent.Handler handler )
-  {
-    return _eventBus.addHandler( MessageEvent.getType(), handler );
-  }
-
-  @Nonnull
-  public final HandlerRegistration addErrorHandler( @Nonnull ErrorEvent.Handler handler )
-  {
-    return _eventBus.addHandler( ErrorEvent.getType(), handler );
+    _listener = null == listener ? NullWebSocketListener.LISTENER : listener;
   }
 
   /**
@@ -157,7 +149,7 @@ public abstract class WebSocket
    */
   protected final void onOpen()
   {
-    _eventBus.fireEventFromSource( new OpenEvent( this ), this );
+    getListener().onOpen( this );
   }
 
   /**
@@ -167,7 +159,7 @@ public abstract class WebSocket
                                 final int code,
                                 @Nullable final String reason )
   {
-    _eventBus.fireEventFromSource( new CloseEvent( this, wasClean, code, reason ), this );
+    getListener().onClose( this, wasClean, code, reason );
   }
 
   /**
@@ -175,7 +167,7 @@ public abstract class WebSocket
    */
   protected final void onMessage( final String data )
   {
-    _eventBus.fireEventFromSource( new MessageEvent( this, data ), this );
+    getListener().onMessage( this, data );
   }
 
   /**
@@ -183,7 +175,7 @@ public abstract class WebSocket
    */
   protected final void onMessage( final ArrayBuffer data )
   {
-    _eventBus.fireEventFromSource( new MessageEvent( this, data ), this );
+    getListener().onMessage( this, data );
   }
 
   /**
@@ -191,7 +183,7 @@ public abstract class WebSocket
    */
   protected final void onError()
   {
-    _eventBus.fireEventFromSource( new ErrorEvent( this ), this );
+    getListener().onError( this );
   }
 
   /**

@@ -3,13 +3,11 @@ package org.realityforge.gwt.websockets.client.html5;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.typedarrays.shared.ArrayBuffer;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
-import com.google.web.bindery.event.shared.EventBus;
-import com.google.web.bindery.event.shared.SimpleEventBus;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import org.realityforge.gwt.websockets.client.WebSocket;
 
-public class Html5WebSocket
+public final class Html5WebSocket
   extends WebSocket
 {
   public static native boolean isSupported() /*-{
@@ -24,13 +22,8 @@ public class Html5WebSocket
     @Override
     public WebSocket newWebSocket()
     {
-      return new Html5WebSocket( new SimpleEventBus() );
+      return new Html5WebSocket();
     }
-  }
-
-  public Html5WebSocket( final EventBus eventBus )
-  {
-    super( eventBus );
   }
 
   @Override
