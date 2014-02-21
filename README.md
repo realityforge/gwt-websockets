@@ -37,19 +37,17 @@ Then you can interact with the WebSocket from within the browser.
 final WebSocket webSocket = WebSocket.newWebSocketIfSupported();
 if ( null != webSocket )
 {
-  webSocket.addOpenHandler( new OpenEvent.Handler()
+  webSocket.setListener( new WebSocketListenerAdapter()
   {
     @Override
-    public void onOpenEvent( @Nonnull final OpenEvent event )
+    public void onOpen( @Nonnull final WebSocket webSocket )
     {
       // After we have connected we can send
       webSocket.send( "Hello!" );
     }
-  } );
-  webSocket.addMessageHandler( new MessageEvent.Handler()
-  {
+
     @Override
-    public void onMessageEvent( @Nonnull final MessageEvent event )
+    public void onMessage( @Nonnull final WebSocket webSocket, @Nonnull final String data )
     {
       // After we receive a message back we can close the socket
       webSocket.close();
