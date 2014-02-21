@@ -6,6 +6,9 @@ import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+/**
+ * The browser-based WebSocket implementation.
+ */
 final class Html5WebSocket
   extends WebSocket
 {
@@ -25,24 +28,36 @@ final class Html5WebSocket
     }
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void close()
+    throws IllegalStateException
   {
     checkConnected();
     _webSocket.close();
     _webSocket = null;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void close( final short code, @Nullable final String reason )
+    throws IllegalStateException
   {
     checkConnected();
     _webSocket.close( code, reason );
     _webSocket = null;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void connect( @Nonnull final String server, @Nonnull final String... protocols )
+    throws IllegalStateException
   {
     if ( null != _webSocket )
     {
@@ -52,61 +67,96 @@ final class Html5WebSocket
     setBinaryType( BinaryType.ARRAYBUFFER );
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean isConnected()
+    throws IllegalStateException
   {
     return null != _webSocket;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public final int getBufferedAmount()
+    throws IllegalStateException
   {
     checkConnected();
     return _webSocket.getBufferedAmount();
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String getProtocol()
+    throws IllegalStateException
   {
     checkConnected();
     return _webSocket.getProtocol();
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String getURL()
+    throws IllegalStateException
   {
     checkConnected();
     return _webSocket.getURL();
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String getExtensions()
+    throws IllegalStateException
   {
     checkConnected();
     return _webSocket.getExtensions();
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public final void send( @Nonnull String data )
+    throws IllegalStateException
   {
     checkConnected();
     _webSocket.send( data );
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void send( @Nonnull final ArrayBufferView data )
+    throws IllegalStateException
   {
     checkConnected();
     _webSocket.send( data );
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void send( @Nonnull final ArrayBuffer data )
+    throws IllegalStateException
   {
     checkConnected();
     _webSocket.send( data );
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public final ReadyState getReadyState()
   {
@@ -120,21 +170,33 @@ final class Html5WebSocket
     }
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void setBinaryType( @Nonnull final BinaryType binaryType )
+    throws IllegalStateException
   {
     checkConnected();
     _webSocket.setBinaryType( binaryType.name().toLowerCase() );
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public BinaryType getBinaryType()
+    throws IllegalStateException
   {
     checkConnected();
     return BinaryType.valueOf( _webSocket.getBinaryType().toUpperCase() );
   }
 
+  /**
+   * Make sure the implementation is present and if not raise an IllegalStateException.
+   */
   private void checkConnected()
+    throws IllegalStateException
   {
     if ( null == _webSocket )
     {
@@ -142,6 +204,9 @@ final class Html5WebSocket
     }
   }
 
+  /**
+   * The underlying WebSocket implementation.
+   */
   private final static class WebSocketImpl
     extends JavaScriptObject
   {
