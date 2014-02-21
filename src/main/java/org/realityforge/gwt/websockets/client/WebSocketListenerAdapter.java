@@ -10,11 +10,17 @@ import javax.annotation.Nullable;
 public abstract class WebSocketListenerAdapter
   implements WebSocketListener
 {
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void onOpen( @Nonnull final WebSocket webSocket )
   {
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void onClose( @Nonnull final WebSocket webSocket,
                        final boolean wasClean,
@@ -23,16 +29,25 @@ public abstract class WebSocketListenerAdapter
   {
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void onMessage( @Nonnull final WebSocket webSocket, @Nonnull final String data )
   {
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void onMessage( @Nonnull final WebSocket webSocket, @Nonnull final ArrayBuffer data )
   {
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void onError( @Nonnull final WebSocket webSocket )
   {
