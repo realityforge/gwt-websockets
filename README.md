@@ -15,7 +15,7 @@ into the build system. i.e.
 <dependency>
    <groupId>org.realityforge.gwt.websockets</groupId>
    <artifactId>gwt-websockets</artifactId>
-   <version>0.4</version>
+   <version>0.5</version>
    <scope>provided</scope>
 </dependency>
 ```
