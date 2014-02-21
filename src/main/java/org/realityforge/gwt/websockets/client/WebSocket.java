@@ -6,18 +6,30 @@ import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+/**
+ * The WebSocket class.
+ */
 public abstract class WebSocket
 {
+  /**
+   * The factory used for creating WebSocket instances.
+   */
   public interface Factory
   {
     WebSocket newWebSocket();
   }
 
+  /**
+   * The states of the WebSocket.
+   */
   public enum ReadyState
   {
     CONNECTING, OPEN, CLOSING, CLOSED
   }
 
+  /**
+   * The types of data the WebSocket can receive.
+   */
   public enum BinaryType
   {
     BLOB, ARRAYBUFFER
@@ -85,59 +97,152 @@ public abstract class WebSocket
     }
   }
 
-  public abstract void connect( @Nonnull String server, @Nonnull String... protocols )
+  /**
+   * Connect the WebSocket to the specified url, passing specified protocols.
+   *
+   * @param url the url to open.
+   * @throws IllegalStateException if the WebSocket is already open.
+   */
+  public abstract void connect( @Nonnull String url, @Nonnull String... protocols )
     throws IllegalStateException;
 
+  /**
+   * Close the WebSocket and stop receiving MessageEvents.
+   *
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract void close()
     throws IllegalStateException;
 
-  public void close( short code )
+  /**
+   * Close the WebSocket with specified code and stop receiving MessageEvents.
+   *
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
+  public final void close( short code )
     throws IllegalStateException
   {
     close( code, null );
   }
 
+  /**
+   * Close the WebSocket with specified code and reason, and stop receiving MessageEvents.
+   *
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract void close( short code, @Nullable String reason )
     throws IllegalStateException;
 
+  /**
+   * @return true if the WebSocket is connected, false otherwise.
+   */
   public abstract boolean isConnected();
 
+  /**
+   * Send some string data across the WebSocket.
+   *
+   * @param data the data to send.
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract void send( @Nonnull String data )
     throws IllegalStateException;
 
+  /**
+   * Send some ArrayBuffer data across the WebSocket.
+   *
+   * @param data the data to send.
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract void send( @Nonnull ArrayBuffer data )
     throws IllegalStateException;
 
+  /**
+   * Send some ArrayBufferView data across the WebSocket.
+   *
+   * @param data the data to send.
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract void send( @Nonnull ArrayBufferView data )
     throws IllegalStateException;
 
+  /**
+   * Return the amount buffered on underlying WebSocket.
+   *
+   * @return the amount buffered on underlying WebSocket.
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract int getBufferedAmount()
     throws IllegalStateException;
 
+  /**
+   * Return the protocol used by the underlying WebSocket.
+   *
+   * @return the protocol used by the underlying WebSocket.
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract String getProtocol()
     throws IllegalStateException;
 
+  /**
+   * Return the url that the underlying WebSOcket is connected to.
+   *
+   * @return the url that the underlying WebSOcket is connected to.
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract String getURL()
     throws IllegalStateException;
 
+  /**
+   * Return the extensions that the underlying WebSocket is connected using.
+   *
+   * @return the extensions that the underlying WebSocket is connected using.
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract String getExtensions()
     throws IllegalStateException;
 
-  public abstract ReadyState getReadyState()
-    throws IllegalStateException;
+  /**
+   * Return the state of the WebSocket.
+   *
+   * @return the state of the WebSocket.
+   */
+  public abstract ReadyState getReadyState();
 
+  /**
+   * Set the type of the binary messages that the WebSocket will receive.
+   * Note: At this stage only ARRAYBUFFER is supported.
+   *
+   * @param binaryType the type of the binary messages that the WebSocket will receive.
+   * @throws IllegalStateException
+   */
   public abstract void setBinaryType( @Nonnull BinaryType binaryType )
     throws IllegalStateException;
 
+  /**
+   * Return the type of the binary messages that the WebSocket will receive.
+   *
+   * @return the type of the binary messages that the WebSocket will receive.
+   * @throws IllegalStateException if the WebSocket is not open.
+   */
   public abstract BinaryType getBinaryType()
     throws IllegalStateException;
 
+  /**
+   * Return the listener associated with the WebSocket.
+   *
+   * @return the listener associated with the WebSocket.
+   */
   @Nonnull
   public final WebSocketListener getListener()
   {
     return _listener;
   }
 
+  /**
+   * Set the listener to receive messages from the WebSocket.
+   *
+   * @param listener the listener to receive messages from the WebSocket.
+   */
   public final void setListener( @Nullable final WebSocketListener listener )
   {
     _listener = null == listener ? NullWebSocketListener.LISTENER : listener;
