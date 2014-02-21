@@ -90,7 +90,7 @@ public class EventBasedWebSocketListener
   @Override
   public final void onOpen( @Nonnull final WebSocket webSocket )
   {
-    _eventBus.fireEventFromSource( new OpenEvent( webSocket ), this );
+    _eventBus.fireEventFromSource( new OpenEvent( webSocket ), webSocket );
   }
 
   /**
@@ -102,7 +102,7 @@ public class EventBasedWebSocketListener
                              final int code,
                              @Nullable final String reason )
   {
-    _eventBus.fireEventFromSource( new CloseEvent( webSocket, wasClean, code, reason ), this );
+    _eventBus.fireEventFromSource( new CloseEvent( webSocket, wasClean, code, reason ), webSocket );
   }
 
   /**
@@ -111,7 +111,7 @@ public class EventBasedWebSocketListener
   @Override
   public final void onMessage( @Nonnull final WebSocket webSocket, @Nonnull final String data )
   {
-    _eventBus.fireEventFromSource( new MessageEvent( webSocket, data ), this );
+    _eventBus.fireEventFromSource( new MessageEvent( webSocket, data ), webSocket );
   }
 
   /**
@@ -120,7 +120,7 @@ public class EventBasedWebSocketListener
   @Override
   public final void onMessage( @Nonnull final WebSocket webSocket, @Nonnull final ArrayBuffer data )
   {
-    _eventBus.fireEventFromSource( new MessageEvent( webSocket, data ), this );
+    _eventBus.fireEventFromSource( new MessageEvent( webSocket, data ), webSocket );
   }
 
   /**
@@ -129,6 +129,6 @@ public class EventBasedWebSocketListener
   @Override
   public final void onError( @Nonnull final WebSocket webSocket )
   {
-    _eventBus.fireEventFromSource( new ErrorEvent( webSocket ), this );
+    _eventBus.fireEventFromSource( new ErrorEvent( webSocket ), webSocket );
   }
 }

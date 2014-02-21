@@ -1,3 +1,7 @@
+## 0.6:
+
+* Ensure that the source of the event is the WebSocket.
+
 ## 0.5:
 
 * Add WebSocket.isConnected() method.
