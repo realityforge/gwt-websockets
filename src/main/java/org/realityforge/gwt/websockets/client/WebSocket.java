@@ -5,7 +5,6 @@ import com.google.gwt.typedarrays.shared.ArrayBuffer;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.realityforge.gwt.websockets.client.html5.Html5WebSocket;
 
 public abstract class WebSocket
 {

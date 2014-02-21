@@ -1,13 +1,12 @@
-package org.realityforge.gwt.websockets.client.html5;
+package org.realityforge.gwt.websockets.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.typedarrays.shared.ArrayBuffer;
 import com.google.gwt.typedarrays.shared.ArrayBufferView;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.realityforge.gwt.websockets.client.WebSocket;
 
-public final class Html5WebSocket
+final class Html5WebSocket
   extends WebSocket
 {
   public static native boolean isSupported() /*-{
@@ -16,7 +15,7 @@ public final class Html5WebSocket
 
   private WebSocketImpl _webSocket;
 
-  public static class Factory
+  static class Factory
     implements WebSocket.Factory
   {
     @Override
