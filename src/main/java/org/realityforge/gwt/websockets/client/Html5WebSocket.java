@@ -37,7 +37,7 @@ final class Html5WebSocket
   {
     checkConnected();
     _webSocket.close();
-    _webSocket = null;
+    socketClosed();
   }
 
   /**
@@ -49,6 +49,11 @@ final class Html5WebSocket
   {
     checkConnected();
     _webSocket.close( code, reason );
+    socketClosed();
+  }
+
+  private void socketClosed()
+  {
     _webSocket = null;
   }
 
@@ -237,6 +242,7 @@ final class Html5WebSocket
                              client.@org.realityforge.gwt.websockets.client.WebSocket::onClose(ZILjava/lang/String;)( event.wasClean,
                                                                                                                       event.code,
                                                                                                                       event.reason );
+                             client.@org.realityforge.gwt.websockets.client.Html5WebSocket::socketClosed()();
                            } );
       return ws;
     }-*/;

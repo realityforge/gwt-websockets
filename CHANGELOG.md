@@ -1,6 +1,7 @@
 ## 0.6:
 
 * Ensure that the source of the event is the WebSocket.
+* Fix bug to ensure that when the remote side closes the WebSocket, the state is reset correctly.
 
 ## 0.5:
 
