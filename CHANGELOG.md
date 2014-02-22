@@ -1,3 +1,7 @@
+## 1.0:
+
+* Minor documentation improvements.
+
 ## 0.6:
 
 * Ensure that the source of the event is the WebSocket.
