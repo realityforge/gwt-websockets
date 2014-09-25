@@ -1,3 +1,7 @@
+## 1.1.1:
+
+* Ensure isSupported() checks for older MozWebSocket. Reported by By Ali Akhtar.
+
 ## 1.1:
 
 * Support older Mozilla WebSocket variants via MozWebSocket. Reported by By Ali Akhtar.

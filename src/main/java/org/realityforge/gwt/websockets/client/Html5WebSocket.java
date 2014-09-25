@@ -13,7 +13,7 @@ final class Html5WebSocket
   extends WebSocket
 {
   public static native boolean isSupported() /*-{
-    return !!$wnd.WebSocket;
+    return !!$wnd.WebSocket || !!$wnd.MozWebSocket;
   }-*/;
 
   private WebSocketImpl _webSocket;
