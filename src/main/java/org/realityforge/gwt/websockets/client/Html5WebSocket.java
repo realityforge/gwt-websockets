@@ -13,7 +13,7 @@ final class Html5WebSocket
   extends WebSocket
 {
   public static native boolean isSupported() /*-{
-    return !!window.WebSocket;
+    return !!$wnd.WebSocket;
   }-*/;
 
   private WebSocketImpl _webSocket;
@@ -217,7 +217,7 @@ final class Html5WebSocket
   {
     static native WebSocketImpl create( WebSocket client, String server, String... protocols )
     /*-{
-      var ws = new WebSocket( server, protocols );
+      var ws = (!!$wnd.WebSocket) ? new $wnd.WebSocket( server, protocols ) : $wnd.MozWebSocket( server, protocols );
       ws.onopen = $entry( function ()
                           {
                             client.@org.realityforge.gwt.websockets.client.WebSocket::onOpen()();

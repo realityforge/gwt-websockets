@@ -1,3 +1,9 @@
+## 1.1:
+
+* Support older Mozilla WebSocket variants via MozWebSocket. Reported by By Ali Akhtar.
+* Fix bug where WebSockets were instantiated using window rather than $wnd which does not work
+  in all linkers. Reported by By Ali Akhtar.
+
 ## 1.0:
 
 * Minor documentation improvements.
