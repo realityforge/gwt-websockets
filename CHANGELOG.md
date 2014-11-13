@@ -1,3 +1,8 @@
+## 1.1.2:
+
+* Fix bug where the sub-protocols parameter was not being passed down to the native
+  WebSocket when opening a WebSocket.
+
 ## 1.1.1:
 
 * Ensure isSupported() checks for older MozWebSocket. Reported by By Ali Akhtar.

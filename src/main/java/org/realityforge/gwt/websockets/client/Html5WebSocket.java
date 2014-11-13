@@ -68,7 +68,7 @@ final class Html5WebSocket
     {
       throw new IllegalStateException( "WebSocket already connected" );
     }
-    _webSocket = WebSocketImpl.create( this, server );
+    _webSocket = WebSocketImpl.create( this, server, protocols );
     setBinaryType( BinaryType.ARRAYBUFFER );
   }
 
