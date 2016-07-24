@@ -41,14 +41,14 @@ if ( null != webSocket )
   webSocket.setListener( new WebSocketListenerAdapter()
   {
     @Override
-    public void onOpen( @Nonnull final WebSocket webSocket )
+    public void onOpen( final WebSocket webSocket )
     {
       // After we have connected we can send
       webSocket.send( "Hello!" );
     }
 
     @Override
-    public void onMessage( @Nonnull final WebSocket webSocket, @Nonnull final String data )
+    public void onMessage( final WebSocket webSocket, final String data )
     {
       // After we receive a message back we can close the socket
       webSocket.close();
