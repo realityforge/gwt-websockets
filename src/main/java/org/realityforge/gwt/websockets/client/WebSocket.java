@@ -213,7 +213,7 @@ public abstract class WebSocket
    * Note: At this stage only ARRAYBUFFER is supported.
    *
    * @param binaryType the type of the binary messages that the WebSocket will receive.
-   * @throws IllegalStateException
+   * @throws IllegalStateException if the WebSocket is not open.
    */
   public abstract void setBinaryType( @Nonnull BinaryType binaryType )
     throws IllegalStateException;
