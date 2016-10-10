@@ -1,4 +1,4 @@
-language: java
+language: ruby
 jdk:
   - oraclejdk7
 rvm:
