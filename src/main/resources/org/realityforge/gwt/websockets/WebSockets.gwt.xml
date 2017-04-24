@@ -1,6 +1,7 @@
 <module>
   <source path="client"/>
 
+  <inherits name='com.google.gwt.event.Event'/>
   <inherits name='com.google.web.bindery.event.Event'/>
   <inherits name='com.google.gwt.core.Core'/>
   <inherits name='com.google.gwt.typedarrays.TypedArrays'/>
