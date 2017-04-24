@@ -1,6 +1,6 @@
 language: ruby
 jdk:
-  - oraclejdk7
+  - oraclejdk8
 sudo: false
 rvm:
   - 2.3.1
