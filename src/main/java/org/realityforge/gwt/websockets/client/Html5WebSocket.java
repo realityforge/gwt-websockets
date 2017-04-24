@@ -228,7 +228,7 @@ final class Html5WebSocket
                            } );
       ws.onmessage = $entry( function ( response )
                              {
-                               if ( typeof(response.data) == 'string' )
+                               if ( typeof(response.data) === 'string' )
                                {
                                  client.@org.realityforge.gwt.websockets.client.WebSocket::onMessage(Ljava/lang/String;)( response.data );
                                }
