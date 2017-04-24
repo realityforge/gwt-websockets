@@ -4,13 +4,12 @@ import com.google.gwt.event.shared.EventHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import org.realityforge.gwt.websockets.client.WebSocket;
-import org.realityforge.gwt.websockets.client.event.CloseEvent.Handler;
 
 /**
  * Event fired when the web socket is closed.
  */
 public class CloseEvent
-  extends WebSocketEvent<Handler>
+  extends WebSocketEvent<CloseEvent.Handler>
 {
   public static final int CLOSE_NORMAL = 1000;
   public static final int CLOSE_GOING_AWAY = 1001;

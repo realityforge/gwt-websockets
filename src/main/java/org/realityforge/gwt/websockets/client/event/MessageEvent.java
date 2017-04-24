@@ -4,10 +4,9 @@ import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.typedarrays.shared.ArrayBuffer;
 import javax.annotation.Nonnull;
 import org.realityforge.gwt.websockets.client.WebSocket;
-import org.realityforge.gwt.websockets.client.event.MessageEvent.Handler;
 
 public class MessageEvent
-  extends WebSocketEvent<Handler>
+  extends WebSocketEvent<MessageEvent.Handler>
 {
   public interface Handler
     extends EventHandler

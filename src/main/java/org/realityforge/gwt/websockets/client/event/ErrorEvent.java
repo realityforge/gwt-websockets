@@ -3,13 +3,12 @@ package org.realityforge.gwt.websockets.client.event;
 import com.google.gwt.event.shared.EventHandler;
 import javax.annotation.Nonnull;
 import org.realityforge.gwt.websockets.client.WebSocket;
-import org.realityforge.gwt.websockets.client.event.ErrorEvent.Handler;
 
 /**
  * Event fired when there is an error with the web socket.
  */
 public class ErrorEvent
-  extends WebSocketEvent<Handler>
+  extends WebSocketEvent<ErrorEvent.Handler>
 {
   public interface Handler
     extends EventHandler

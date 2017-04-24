@@ -4,13 +4,12 @@ import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import javax.annotation.Nonnull;
 import org.realityforge.gwt.websockets.client.WebSocket;
-import org.realityforge.gwt.websockets.client.event.OpenEvent.Handler;
 
 /**
  * Event fired when web socket successfully connects.
  */
 public class OpenEvent
-  extends WebSocketEvent<Handler>
+  extends WebSocketEvent<OpenEvent.Handler>
 {
   public interface Handler
     extends EventHandler
