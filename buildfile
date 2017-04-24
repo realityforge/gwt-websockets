@@ -12,7 +12,7 @@ define 'gwt-websockets' do
 
   pom.add_apache_v2_license
   pom.add_github_project('realityforge/gwt-websockets')
-  pom.add_developer('realityforge', "Peter Donald")
+  pom.add_developer('realityforge', 'Peter Donald')
   pom.provided_dependencies.concat [:javax_annotation, :gwt_user]
 
   compile.with :javax_annotation, :gwt_user
