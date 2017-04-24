@@ -1,5 +1,6 @@
 require 'buildr/git_auto_version'
 require 'buildr/gpg'
+require 'buildr/gwt'
 
 desc 'GWT WebSocket Library'
 define 'gwt-websockets' do
@@ -16,6 +17,10 @@ define 'gwt-websockets' do
   pom.provided_dependencies.concat [:javax_annotation, :gwt_user]
 
   compile.with :javax_annotation, :gwt_user
+
+  gwt(%w(org.realityforge.gwt.websockets.WebSockets),
+      :java_args => %w(-Xms512M -Xmx1024M),
+      :draft_compile => 'true') unless ENV['GWT'] == 'no'
 
   test.using :testng
   test.with :mockito
