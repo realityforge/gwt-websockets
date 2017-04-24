@@ -1,3 +1,8 @@
+## 1.2:
+
+* Move to GWT 2.8.0.
+* Move to Java 8.
+
 ## 1.1.2:
 
 * Fix bug where the sub-protocols parameter was not being passed down to the native
