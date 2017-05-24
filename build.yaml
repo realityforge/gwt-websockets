@@ -3,7 +3,7 @@ repositories:
    - http://repo1.maven.org/maven2
 
 artifacts:
-  javax_annotation: com.google.code.findbugs:jsr305:jar:2.0.1
+  javax_annotation: com.google.code.findbugs:jsr305:jar:3.0.1
   gwt_user: com.google.gwt:gwt-user:jar:2.8.1
 
   # Mocking library used in tests
