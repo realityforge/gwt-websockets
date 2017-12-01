@@ -4,7 +4,7 @@ repositories:
 
 artifacts:
   javax_annotation: com.google.code.findbugs:jsr305:jar:3.0.1
-  gwt_user: com.google.gwt:gwt-user:jar:2.8.1
+  gwt_user: com.google.gwt:gwt-user:jar:2.8.2
 
   # Mocking library used in tests
   mockito: org.mockito:mockito-all:jar:1.9.5
