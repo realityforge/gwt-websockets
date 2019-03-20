@@ -1,8 +1,8 @@
 # Deprecated
 
 > This project has been deprecated in favour of the WebSocket support provided by
-> [Elemental2](https://github.com/google/elemental2). Elemental2 is more future
-> compatible, closer to the browser and easier to maintain.
+> [Elemental2](https://github.com/google/elemental2). Elemental2 is closer to the
+> browser, future compatible and easier to maintain.
 
 ---
 
